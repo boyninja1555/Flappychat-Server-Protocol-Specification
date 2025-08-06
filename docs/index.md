@@ -6,12 +6,12 @@ Every request and response from and to the Flappychat server is done over [socke
 
 ## Table of Contents
 
-- [Handshakes and authentication](docs/handshakes-and-authentication/index.md)
-    - [Connection handshake](docs/handshakes-and-authentication/connection.md)
-    - [Auth fields handshake](docs/handshakes-and-authentication/get-auth-fields.md)
-    - [Auth request](docs/handshakes-and-authentication/auth-request.md)
-- [Runtime tasks](docs/runtime-tasks/index.md)
-    - [Send messages](docs/runtime-tasks/send-messages.md)
+- [Handshakes and authentication](handshakes-and-authentication/index.md)
+    - [Connection handshake](handshakes-and-authentication/connection.md)
+    - [Auth fields handshake](handshakes-and-authentication/get-auth-fields.md)
+    - [Auth request](handshakes-and-authentication/auth-request.md)
+- [Runtime tasks](runtime-tasks/index.md)
+    - [Send messages](runtime-tasks/send-messages.md)
 
 ## *(Rust)* Crates Used in Example Server
 
