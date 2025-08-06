@@ -25,3 +25,4 @@ Every request and response from and to the Flappychat server is done over [socke
 | tower-http   | 0.6.6         | CORS           |
 
 **Rust Toolchain:** Nightly
+**Warning:** The example server must have a proxy with an SSL certification in front, because the website client runs on HTTPS!
