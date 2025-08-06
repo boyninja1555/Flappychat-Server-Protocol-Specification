@@ -5,6 +5,10 @@ This handshake is currently a placeholder in the example server, but you may use
 Your server should be configured to accept the following parameters in the [socket.io](https://socket.io) connection:
 
 ```typescript
+data: {
+    username: String,
+    password: String,
+}
 ```
 
 In a Rust Flappychat Server, the code for handling messages should look something like this:
