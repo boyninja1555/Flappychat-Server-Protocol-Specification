@@ -1,4 +1,4 @@
-# Send Messages - [Runtime Tasks](index.md) - [Flappychat Server Protocol Specification](../index.md)
+## Send Messages - [Runtime Tasks](index.md)
 
 Because the authentication steps only exist to check account validity prior to connection, the account info must be supplied every message. This also ensures an account still exists when an update is required.
 

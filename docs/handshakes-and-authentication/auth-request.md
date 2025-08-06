@@ -1,4 +1,4 @@
-# Auth request - [Handshakes and Authentication](index.md) - [Flappychat Server Protocol Specification](../index.md)
+## Auth request - [Handshakes and Authentication](index.md)
 
 This handshake is currently a placeholder in the example server, but you may use it if you don't want to go directly to authentication. For example, to implement IP ban checks.
 

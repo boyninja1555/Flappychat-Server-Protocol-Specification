@@ -1,8 +1,8 @@
-# Handshakes and Authentication - [Flappychat Server Protocol Specification](../../README.md)
+## Handshakes and Authentication
 
 These requests and responses define the runtime functions such as real-time messaging.
 
-## Table of Contents
+### Table of Contents
 
 - [Back to index](../index.md)
 - [Connection handshake](connection.md)
