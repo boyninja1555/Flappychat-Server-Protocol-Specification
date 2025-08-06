@@ -51,10 +51,27 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                 .ok();
         });
 
+        let io_inner: SocketIo = io_clone.clone();
         socket.on(
             "request-auth",
             |socket: SocketRef, Data(data): Data<AuthData>| async move {
+                let io_inner: SocketIo = io_inner.clone();
+                let server_username: String = "Server".to_string();
+                if data.username.trim().to_lowercase() == server_username {
+                    return;
+                }
+
                 socket.emit("authed", &serde_json::json!(data)).ok();
+                io_inner
+                    .emit(
+                        "new-user",
+                        &serde_json::json!({
+                            "server_username": server_username,
+                            "join_message": format!("{} joined the chat!", data.username.trim()),
+                        }),
+                    )
+                    .await
+                    .ok();
             },
         );
 
@@ -65,13 +82,34 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             move |_socket: SocketRef, Data(data): Data<MessageData>| {
                 let io_inner: SocketIo = io_inner.clone();
                 async move {
-                    io_inner.emit("new-message", &serde_json::json!({
-                        "username": data.details.username,
-                        "message": data.message,
-                    })).await.ok();
+                    io_inner
+                        .emit(
+                            "new-message",
+                            &serde_json::json!({
+                                "username": data.details.username,
+                                "message": data.message,
+                            }),
+                        )
+                        .await
+                        .ok();
                 }
             },
         );
+
+        let io_inner: SocketIo = io_clone.clone();
+        socket.on("leave", |_socket: SocketRef, Data(data): Data<AuthData>| async move {
+            let server_username: String = "Server".to_string();
+            io_inner
+                .emit(
+                    "user-left",
+                    &serde_json::json!({
+                        "server_username": server_username,
+                        "leave_message": format!("{} left the chat.", data.username.trim()),
+                    }),
+                )
+                .await
+                .ok();
+        })
     });
 
     let cors: tower_http::cors::CorsLayer = tower_http::cors::CorsLayer::new()
