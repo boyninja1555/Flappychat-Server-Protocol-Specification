@@ -42,6 +42,7 @@ io.ns("/", move |socket: SocketRef| {
             io_inner.emit("new-user", &serde_json::json!({
                 "server_username": server_username,
                 "join_message": format!("{} joined the chat!", data.username.trim()),
+                "joined_username": data.username.trim(),
             })).await.ok();
         },
     );

@@ -68,6 +68,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                         &serde_json::json!({
                             "server_username": server_username,
                             "join_message": format!("{} joined the chat!", data.username.trim()),
+                            "joined_username": data.username.trim(),
                         }),
                     )
                     .await
@@ -105,6 +106,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                     &serde_json::json!({
                         "server_username": server_username,
                         "leave_message": format!("{} left the chat.", data.username.trim()),
+                        "left_username": data.username.trim(),
                     }),
                 )
                 .await
